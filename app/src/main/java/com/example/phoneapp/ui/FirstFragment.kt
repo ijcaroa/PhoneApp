@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.phoneapp.R
 import com.example.phoneapp.databinding.FragmentFirstBinding
@@ -34,12 +35,21 @@ class FirstFragment : Fragment() {
         val adapter = PhoneAdapter()
         binding.rvPhones.adapter = adapter
         binding.rvPhones.layoutManager = LinearLayoutManager(context)
+        binding.rvPhones.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
+
 
         viewModel.allPhones.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.update(it)
+
             }
         })
+
+       /* viewModel.allPhones.observe(viewLifecycleOwner, Observer {
+            it?.let {
+
+            }
+        })*/
 
            /*  .setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

@@ -17,6 +17,7 @@ class PhoneAdapter : RecyclerView.Adapter<PhoneAdapter.PhoneVH>() {
     private val selectedPhone = MutableLiveData<PhoneListEntity>()
     fun selectedPhoneItem():LiveData<PhoneListEntity> = selectedPhone
 
+
     fun update(list: List<PhoneListEntity>){
         listPhones = list
         notifyDataSetChanged()
@@ -28,6 +29,9 @@ class PhoneAdapter : RecyclerView.Adapter<PhoneAdapter.PhoneVH>() {
                 fun bind(phone: PhoneListEntity){
                     Glide.with(binding.imageView3).load(phone.image).into(binding.imageView3)
                     itemView.setOnClickListener(this)
+                    binding.tVName.text = phone.name
+                    binding.tVPrice.text = phone.price.toInt().toString()
+
                 }
 
         override fun onClick(v: View?) {
