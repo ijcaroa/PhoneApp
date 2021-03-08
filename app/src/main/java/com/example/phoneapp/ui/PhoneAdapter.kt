@@ -15,7 +15,7 @@ class PhoneAdapter : RecyclerView.Adapter<PhoneAdapter.PhoneVH>() {
 
     private var listPhones = listOf<PhoneListEntity>()
     private val selectedPhone = MutableLiveData<PhoneListEntity>()
-    fun selectedPhoneItem():LiveData<PhoneListEntity> = selectedPhone
+
 
 
     fun update(list: List<PhoneListEntity>){
@@ -23,6 +23,8 @@ class PhoneAdapter : RecyclerView.Adapter<PhoneAdapter.PhoneVH>() {
         notifyDataSetChanged()
 
     }
+
+    fun selectedPhone():LiveData<PhoneListEntity> = selectedPhone
 
     inner class PhoneVH (private val binding: RvPhoneImagelistBinding ):
             RecyclerView.ViewHolder(binding.root),View.OnClickListener{

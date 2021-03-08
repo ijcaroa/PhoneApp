@@ -21,6 +21,13 @@ class PhoneViewModel (application: Application): AndroidViewModel(application){
         viewModelScope.launch {
             repository.fetchImages()
         }
-        allPhones = repository.listAllPhones
+        allPhones = repository.listAllPhone
+    }
+
+    private var phoneSelected : Int = 0
+    fun getImagesByPhoneFromInternet(id:Int)
+    = viewModelScope.launch {
+        phoneSelected = id
+        repository.fetchPhoneImage(id)
     }
 }

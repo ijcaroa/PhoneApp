@@ -10,7 +10,7 @@ import androidx.room.Query
 interface DetailsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDetailsPhone (detailsPhone : PhoneDetailEntity)
+    suspend fun insertDetailsPhone (detailsPhone: kotlin.collections.List<com.example.phoneapp.local.PhoneDetailEntity>)
 
 
 
