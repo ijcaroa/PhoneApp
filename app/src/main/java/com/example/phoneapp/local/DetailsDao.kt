@@ -18,6 +18,6 @@ interface DetailsDao {
     fun getAllDetails(): LiveData<List<PhoneDetailEntity>>
 
     @Query("SELECT * FROM detail_list WHERE id = :id")
-    fun getPhoneById (id: Int) : LiveData<PhoneDetailEntity>
+    fun getPhoneById (id: Int) : LiveData<List<PhoneDetailEntity>>
 
 }

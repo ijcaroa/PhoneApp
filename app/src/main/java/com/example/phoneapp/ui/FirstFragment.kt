@@ -48,7 +48,9 @@ class FirstFragment : Fragment() {
         adapter.selectedPhone().observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.getImagesByPhoneFromInternet(it.id)
+
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
             }
         })
 

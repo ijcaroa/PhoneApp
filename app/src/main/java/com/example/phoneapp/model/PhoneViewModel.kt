@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.phoneapp.local.PhoneDataBase
+import com.example.phoneapp.local.PhoneDetailEntity
 import com.example.phoneapp.local.PhoneListEntity
 import kotlinx.coroutines.launch
 
@@ -30,4 +31,6 @@ class PhoneViewModel (application: Application): AndroidViewModel(application){
         phoneSelected = id
         repository.fetchPhoneImage(id)
     }
+    fun getPhone(): LiveData<List<PhoneDetailEntity>>
+    = repository.getPhonebyId(phoneSelected)
 }

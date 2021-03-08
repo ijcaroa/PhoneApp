@@ -67,6 +67,9 @@ class PhoneRepository (private val phoneDao :PhoneDao, private val detailsDao: D
         return phoneDetailItem.id.toString().map { PhoneDetailEntity(id = it.toInt()) }
     }*/
 
+    fun getPhonebyId(id: Int): LiveData<List<PhoneDetailEntity>>{
+        return detailsDao.getPhoneById(id)
+    }
 }
 
 
