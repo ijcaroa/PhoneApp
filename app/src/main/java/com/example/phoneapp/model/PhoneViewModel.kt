@@ -26,11 +26,11 @@ class PhoneViewModel (application: Application): AndroidViewModel(application){
     }
 
     private var phoneSelected : Int = 0
-    fun getImagesByPhoneFromInternet(id:Int)
-    = viewModelScope.launch {
+
+    fun getImagesByPhoneFromInternet(id:Int) = viewModelScope.launch {
         phoneSelected = id
         repository.fetchPhoneImage(id)
     }
-    fun getPhone(): LiveData<List<PhoneDetailEntity>>
-    = repository.getPhonebyId(phoneSelected)
+
+    fun getPhone(): LiveData<PhoneDetailEntity> = repository.getPhonebyId(phoneSelected)
 }

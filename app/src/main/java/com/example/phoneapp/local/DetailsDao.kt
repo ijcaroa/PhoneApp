@@ -10,7 +10,7 @@ import androidx.room.Query
 interface DetailsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDetailsPhone (detailsPhone: kotlin.collections.List<com.example.phoneapp.local.PhoneDetailEntity>)
+    suspend fun insertDetailsPhone (detailsPhone:PhoneDetailEntity)
 
 
 
@@ -18,6 +18,6 @@ interface DetailsDao {
     fun getAllDetails(): LiveData<List<PhoneDetailEntity>>
 
     @Query("SELECT * FROM detail_list WHERE id = :id")
-    fun getPhoneById (id: Int) : LiveData<List<PhoneDetailEntity>>
+    fun getPhoneById (id: Int) : LiveData<PhoneDetailEntity>
 
 }

@@ -6,12 +6,10 @@ import retrofit2.http.Path
 
 interface PhoneAPI {
 
-    @GET("details/")
+    @GET("products/")
     suspend fun fetchPhoneList():
             Response<List<PhoneListItem>>
 
-
-    @GET("products/{id}")
-    suspend fun fetchDetailsPhone(@Path("id")id:Int):
-            Response<PhoneDetailItem>
+    @GET("details/{id}")
+    suspend fun fetchDetailsPhone(@Path("id")id:Int): Response<PhoneDetailItem>
 }

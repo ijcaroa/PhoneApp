@@ -1,13 +1,12 @@
 package com.example.phoneapp.local
-
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import org.jetbrains.annotations.NotNull
 
 @Entity(tableName = "detail_list")
 data class PhoneDetailEntity(
     @PrimaryKey
-    @NotNull
+    @NonNull
     val id: Int,
     val description: String,
     val credit: Boolean,

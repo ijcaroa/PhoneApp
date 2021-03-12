@@ -47,8 +47,8 @@ class PhoneRepository (private val phoneDao :PhoneDao, private val detailsDao: D
         service.onSuccess {
             when(it.code()) {
                 200 ->it.body()?.let {
-                    detailsDao.insertDetailsPhone(converterFromInternet2(phoneDetailItem = PhoneDetailItem(id = 0,
-                            description = "",credit = true,image = "",lastPrice = 0,name = "",price = 0)))
+                    Log.d("REPO", "$it")
+                    detailsDao.insertDetailsPhone(converterFromInternet2(it))
                 }
                 else -> Log.d("REPO-IMG", "${it.code()} - ${it.errorBody()}")
             }
@@ -58,16 +58,21 @@ class PhoneRepository (private val phoneDao :PhoneDao, private val detailsDao: D
         }
     }
 
-    private fun converterFromInternet2(phoneDetailItem: PhoneDetailItem): List<PhoneDetailEntity> {
-        return phoneDetailItem.id.toString().map { PhoneDetailEntity(id = 0,
-                description = "",credit = true,image = "",lastPrice = 0,name = "",price = 0)  }
+    private fun converterFromInternet2(phoneDetailItem: PhoneDetailItem): PhoneDetailEntity {
+        return PhoneDetailEntity(id = phoneDetailItem.id,
+                                credit = phoneDetailItem.credit,
+                                image = phoneDetailItem.image,
+                                lastPrice = phoneDetailItem.lastPrice,
+                                price = phoneDetailItem.price,
+                description = phoneDetailItem.description,
+                name = phoneDetailItem.name)
     }
 
     /*fun converterFromInternet2(phoneDetailItem: PhoneDetailItem,id: Int) : List<PhoneDetailEntity> {
         return phoneDetailItem.id.toString().map { PhoneDetailEntity(id = it.toInt()) }
     }*/
 
-    fun getPhonebyId(id: Int): LiveData<List<PhoneDetailEntity>>{
+    fun getPhonebyId(id: Int): LiveData<PhoneDetailEntity>{
         return detailsDao.getPhoneById(id)
     }
 }

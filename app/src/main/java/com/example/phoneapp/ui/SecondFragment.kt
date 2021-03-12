@@ -1,6 +1,7 @@
 package com.example.phoneapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,14 +29,9 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = DetailAdapter()
-        binding.rV2.adapter = adapter
-        binding.rV2.layoutManager = LinearLayoutManager(context)
-        binding.rV2.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
-
         viewModel.getPhone().observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.update(it)
+                Log.d("SEGUNDO", "$it")
             }
         })
     }

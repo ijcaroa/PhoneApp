@@ -1,6 +1,5 @@
 package com.example.phoneapp.remoto
 
-
 import com.google.gson.annotations.SerializedName
 
 data class PhoneDetailItem(
